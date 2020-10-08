@@ -1,0 +1,9 @@
+redmine_package_version: 3.4.13
+
+redmine_package_name: redmine-{{ redmine_package_version }}.tar.gz
+redmine_release_url: https://www.redmine.org/releases/
+redmine_package_url: "{{ redmine_release_url }}{{ redmine_package_name }}"
+
+redmine_dir: /srv/redmine
+redmine_user: redmine
+redmine_group: redmine

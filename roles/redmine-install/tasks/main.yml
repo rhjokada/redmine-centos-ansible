@@ -1,0 +1,44 @@
+- name: Add group - {{ redmine_group }}
+  group:
+    name: "{{ redmine_group }}"
+
+- name: Add user - {{ redmine_user }}
+  user:
+      name: "{{ redmine_user }}"
+      group: "{{ redmine_group }}" # not required. Optionally sets the user's primary group (takes a group name).
+      home: "{{ redmine_dir }}" # not required. Optionally set the user's home directory.
+      create_home: yes # not required. Unless set to C(no), a home directory will be made for the user when the account is created or if the home directory does not exist.,Changed from C(createhome) to C(create_home) in version 2.5.
+
+- name: make redmine directory
+  file:
+    path: "{{ redmine_dir }}"
+    owner: "{{ redmine_user }}"
+    group: "{{ redmine_group }}"
+    state: directory
+    mode: '0755'
+
+- name: download package
+  get_url:
+    dest: "{{ redmine_dir }}/{{ redmine_package_name }}"
+    url: "{{ redmine_package_url }}"
+    owner: "{{ redmine_user }}"
+    group: "{{ redmine_group }}"
+    checksum: "md5:{{ redmine_package_url }}.md5"
+    mode: '0644'
+
+- name: Unpack redmine archive
+  unarchive:
+    src: "{{ redmine_dir }}/{{ redmine_package_name }}"
+    remote_src: yes
+    dest: "{{ redmine_dir }}"
+    owner: "{{ redmine_user }}"
+    group: "{{ redmine_group }}"
+    creates: "{{ redmine_dir }}/CONTRIBUTING.md"
+    extra_opts:
+    - '--strip-components=1'
+
+- name: Install packages
+  dnf:
+    name:
+    - ruby
+    - rubygem-bundler

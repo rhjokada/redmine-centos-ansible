@@ -1,0 +1,9 @@
+production:
+  email_delivery:
+    delivery_method: :smtp
+    smtp_settings:
+      address: "{{ mail_smtp_host }}"
+      port: {{ mail_smtp_port }}
+      domain: "{{ mail_domain }}"
+
+  rmagick_font_path: {{ redmine_font_path }}

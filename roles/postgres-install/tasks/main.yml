@@ -1,0 +1,28 @@
+---
+# tasks file for postgres-install
+- name: install postgres
+  dnf:
+    name:
+    - '@postgresql:12/server'
+    - 'postgresql-contrib'
+    - 'python3-psycopg2'
+    state: present
+
+- name: "Initialize Database"
+  command:
+    /usr/bin/postgresql-setup initdb
+  args:
+    creates: "{{ postgres_config }}"
+  notify: restart postgres
+
+- name: "change bind host"
+  blockinfile:
+    dest: "{{ postgres_config }}"
+    block: |
+      listen_addresses='*'
+  notify: restart postgres
+
+- name: "to Service"
+  systemd:
+    name: postgresql
+    enabled: yes
