@@ -1,0 +1,29 @@
+---
+# tasks file for nginx-install
+- name: Install package
+  dnf:
+    name:
+    - nginx
+
+- name:
+  template:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
+  notify: restart nginx
+
+- name: enable service
+  systemd:
+    name: nginx
+    enabled: yes
+  notify: restart nginx
+
+- name: "open firewall - http, https"
+  firewalld:
+    service: "{{ item }}"
+    permanent: yes
+    state: enabled
+  with_items:
+  - http
+  - https
+  notify: restart firewalld
+
