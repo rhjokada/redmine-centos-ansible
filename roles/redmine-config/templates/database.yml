@@ -1,9 +1,9 @@
 production:
-  adapter: "{{ db_adaptor }}"
-  host: "{{ db_host }}"
-  port: {{ db_port }}
-  database: "{{ db_name }}"
-  username: "{{ db_username }}"
-  password: "{{ db_password }}"
-  encoding: "{{ db_encoding }}"
-  pool: {{ db_num_pool }}
+  adapter: "{{ redmine_db_adaptor }}"
+  host: "{{ redmine_db_host }}"
+  port: {{ redmine_db_port }}
+  database: "{{ redmine_db_name }}"
+  username: "{{ redmine_db_username }}"
+  password: "{{ redmine_db_password }}"
+  encoding: "{{ redmine_db_encoding }}"
+  pool: {{ redmine_db_num_pool }}

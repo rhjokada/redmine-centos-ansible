@@ -1,14 +1,16 @@
 ---
 # defaults file for redmine-config
-db_adaptor: postgresql
-db_host: localhost
-db_port: 5432 
-db_name: redmine
-db_username: redmine
-db_password: password
-db_encoding: utf8
-db_num_pool: 5
+redmine_db_adaptor: postgresql
+redmine_db_host: localhost
+redmine_db_port: 5432 
+redmine_db_name: redmine
+redmine_db_username: redmine
+redmine_db_password: password
+redmine_db_encoding: utf8
+redmine_db_num_pool: 5
 
 mail_smtp_host: localhost
 mail_smtp_port: 25
 mail_domain: localhost
+
+redmine_dir: /srv/redmine
