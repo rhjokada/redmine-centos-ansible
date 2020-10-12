@@ -5,9 +5,9 @@
 - name: Add user - {{ redmine_user }}
   user:
       name: "{{ redmine_user }}"
-      group: "{{ redmine_group }}" # not required. Optionally sets the user's primary group (takes a group name).
-      home: "{{ redmine_dir }}" # not required. Optionally set the user's home directory.
-      create_home: yes # not required. Unless set to C(no), a home directory will be made for the user when the account is created or if the home directory does not exist.,Changed from C(createhome) to C(create_home) in version 2.5.
+      group: "{{ redmine_group }}"
+      home: "{{ redmine_dir }}"
+      create_home: yes
 
 - name: make redmine directory
   file:
@@ -37,8 +37,24 @@
     extra_opts:
     - '--strip-components=1'
 
+- name: chcon
+  file:
+    path: "{{ redmine_dir }}/bin/bundle"
+    setype: bin_t
+
+- name: Install Epel
+  dnf:
+    name: epel-release
+
 - name: Install packages
   dnf:
     name:
     - ruby
     - rubygem-bundler
+    - "@Development Tools"
+    - ruby-devel
+    - zlib-devel
+    - libpq-devel
+    - ImageMagick
+    - ImageMagick-devel
+    enablerepo: PowerTools
