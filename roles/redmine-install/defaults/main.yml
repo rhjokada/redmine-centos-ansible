@@ -7,3 +7,12 @@ redmine_package_url: "{{ redmine_release_url }}{{ redmine_package_name }}"
 redmine_dir: /srv/redmine
 redmine_user: redmine
 redmine_group: redmine
+
+redmine_socket_dir: "{{ redmine_dir }}/tmp/sockets" 
+redmine_socket: "{{ redmine_socket_dir }}/redmine.sock"
+
+redmine_database_service: postgresql.service
+
+redmine_webd_service: redmine-webd.service
+
+redmine_context_root: /redmine

@@ -1,0 +1,14 @@
+--- query.rb.def	2020-09-18 11:00:57.027172801 +0900
++++ query.rb	2020-09-18 11:06:07.955272417 +0900
+@@ -464,9 +464,9 @@
+     json = {}
+     available_filters.each do |field, filter|
+       options = {:type => filter[:type], :name => filter[:name]}
+-      options[:remote] = true if filter.remote
++      options[:remote] = true if filter.respond_to?('remote') && filter.remote
+ 
+-      if has_filter?(field) || !filter.remote
++      if has_filter?(field) || !filter.respond_to?('remote') || !filter.remote
+         options[:values] = filter.values
+         if options[:values] && values_for(field)
+           missing = Array(values_for(field)).select(&:present?) - options[:values].map(&:last)

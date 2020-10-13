@@ -14,3 +14,6 @@ mail_smtp_port: 25
 mail_domain: localhost
 
 redmine_dir: /srv/redmine
+
+redmine_user: redmine
+redmine_group: redmine

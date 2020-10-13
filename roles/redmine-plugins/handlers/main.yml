@@ -1,0 +1,11 @@
+---
+# handlers file for redmine-plugins
+- name: "redmine migration plugins"
+  command:
+    bundle exec rake redmine:plugins:migrate
+  args:
+    chdir: "{{ redmine_dir }}"
+  environment:
+    PATH: "/usr/local/bin:{{ ansible_env.PATH }}"
+    RAILS_ENV: production
+  notify: resatrt redmine_webd

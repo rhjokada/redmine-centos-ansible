@@ -1,0 +1,22 @@
+[Unit]
+Description=Redmine Puma Service
+After={{ redmine_database_service }}
+
+[Service]
+WorkingDirectory={{ redmine_dir }}
+Environment=RAILS_ENV=production
+Environment=RAILS_RELATIVE_URL_ROOT={{ redmine_context_root }}
+SyslogIdentifier=redmine-webd
+PIDFile={{ redmine_dir }}/tmp/pids/redmine-webd.pid
+
+User={{ redmine_user }}
+Group={{ redmine_group }}
+
+Type=simple
+KillMode=process
+KillSignal=SIGQUIT
+
+ExecStart={{ redmine_dir }}/bin/bundle exec pumactl -F config/puma.rb start 
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,13 @@
+---
+# defaults file for redmine-plugins
+redmine_dir: /srv/redmine
+redmine_plugin_dir: "{{ redmine_dir }}/plugins"
+
+redmine_backlog_plugin_repo_url: https://github.com/backlogs/redmine_backlogs.git
+redmine_backlog_plugin_branch: feature/redmine3
+
+redmine_oauth_plugin_repo_url: https://github.com/suer/redmine_oauth_provider.git
+redmine_oauth_plugin_branch: master
+
+redmine_user: redmine
+redmine_group: redmine

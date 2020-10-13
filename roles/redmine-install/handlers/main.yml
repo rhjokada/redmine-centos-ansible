@@ -1,0 +1,6 @@
+---
+# handlers file for redmine-install
+- name: resatrt redmine_webd
+  systemd:
+    name: "{{ redmine_webd_service }}"
+    state: restarted

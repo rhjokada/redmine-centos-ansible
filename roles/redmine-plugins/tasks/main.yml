@@ -1,0 +1,7 @@
+---
+# tasks file for redmine-plugins
+- name: Install redmine_backlogs
+  include: redmine_backlogs.yml
+
+- name: Install redmine_oauth_provider
+  include: redmine_oauth.yml

@@ -1,0 +1,24 @@
+---
+# tasks file for nginx-redmine
+
+- name:
+  template:
+    src: root.conf
+    dest: /etc/nginx/default.d/root.conf
+  notify: restart nginx
+
+- name:
+  template:
+    src: redmine.conf
+    dest: /etc/nginx/default.d/redmine.conf
+    owner: "{{ redmine_user }}"
+    group: "{{ redmine_group }}"
+  notify: restart nginx
+
+- name:
+  template:
+    src: redmine-socket.conf
+    dest: /etc/nginx/conf.d/redmine-socket.conf
+    owner: "{{ redmine_user }}"
+    group: "{{ redmine_group }}"
+  notify: restart nginx

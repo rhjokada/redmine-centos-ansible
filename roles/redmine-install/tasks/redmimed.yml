@@ -1,0 +1,39 @@
+--- 
+- name: copy puma.rb
+  template:
+    src: puma.rb
+    dest: "{{ redmine_dir }}/config/puma.rb"
+    owner: "{{ redmine_user }}"
+    group: "{{ redmine_group }}"
+
+- name: Install service unit file
+  template:
+    src: puma.service
+    dest: "/etc/systemd/system/{{ redmine_webd_service }}"
+  notify: resatrt redmine_webd
+  
+- name:
+  blockinfile:
+    path: "{{ redmine_dir }}/config/environment.rb"
+    block: |
+      Redmine::Utils::relative_url_root = "{{ redmine_context_root }}"
+  notify: resatrt redmine_webd
+
+- name: copy config.ru
+  template:
+    src: config.ru
+    dest: "{{ redmine_dir }}/config.ru"
+    owner: "{{ redmine_user }}"
+    group: "{{ redmine_group }}"
+  notify: resatrt redmine_webd
+
+- name:
+  systemd:
+    name: "{{ redmine_webd_service }}"
+    enabled: yes
+    daemon_reload: yes
+
+- name:
+  file:
+    path: "{{ redmine_socket_dir }}"
+    setype: var_run_t

@@ -1,0 +1,18 @@
+---
+# redmine_oauth
+- name: Checkout redmine_oauth
+  git:
+    repo: "{{ redmine_oauth_plugin_repo_url }}"
+    dest: "{{ redmine_plugin_dir }}/redmine_oauth_provider"
+    version: "{{ redmine_oauth_plugin_branch }}"
+  notify: redmine migration plugins
+
+- name: Install gem packages
+  bundler:
+    executable: "{{ redmine_dir }}/bin/bundle"
+    chdir: "{{ redmine_dir }}"
+    state: present
+    clean: no
+    user_install: yes
+    extra_args: "--path vendor/bundle"
+  notify: redmine migration plugins
