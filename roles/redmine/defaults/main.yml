@@ -1,7 +1,0 @@
-redmine_package:
-  version: 3.4.13
-  md5: 5f17b35dfe73118067f63fb535332cfb
-
-redmine_package_name: redmine-{{ redmine_package.version }}.tar.gz
-redmine_release_url_base: https://www.redmine.org/releases/
-redmine_release_url: "{{ redmine_release_url_base }}{{ redmine_package_name }}"

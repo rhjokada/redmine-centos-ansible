@@ -1,13 +1,30 @@
-- hosts: redmine-servers
-
+---
+- name: Install Postgres
+  hosts: redmine_servers
   roles:
-    - system
-    - pg
-    - ruby
-    - redmine
-    - apache
+  - name: postgres-install
+    become: yes
+  - name: postgres-config
+    become: yes
 
-  post_tasks:
-    - name: 完了
-      debug:
-        msg='インストールが完了しました。 http://{{ ansible_default_ipv4.address }}/redmine/ にアクセスしてください。'
+- name: Install Redmine
+  hosts: redmine_servers
+  roles:
+  - name: redmine-install
+    become: yes
+  - name: redmine-config
+    become: yes
+    become_user: "{{ redmine_user }}"
+  - name: redmine-plugins
+    become: yes
+    become_user: "{{ redmine_user }}"
+
+- name: Install nginx
+  hosts: redmine_servers
+  roles:
+  - name: nginx-install
+    become: yes
+  - name: nginx-config
+    become: yes
+  - name: nginx-redmine
+    become: yes
