@@ -12,5 +12,4 @@ postgres_username: "sample"
 ## password
 ## - echo "md5$(echo -n '<password><username>' | md5sum | awk '{print $1}')"
 ##   - e.g. echo "md5$(echo -n 'passwordsample' | md5sum | awk '{print $1}')"
-postgres_password: "md548a8241422389e72787d7476da970e1d"
-
+postgres_password: "md5{{ [db_passwd_redmine, postgres_username] |join |md5 }}"
