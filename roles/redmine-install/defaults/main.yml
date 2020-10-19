@@ -16,3 +16,6 @@ redmine_database_service: postgresql.service
 redmine_webd_service: redmine-webd.service
 
 redmine_context_root: /redmine
+
+# Redmineで使用する日本語フォントファイル
+redmine_font_path: /usr/share/fonts/google-noto-cjk/NotoSansCJK-Regular.ttc

@@ -17,3 +17,6 @@ redmine_dir: /srv/redmine
 
 redmine_user: redmine
 redmine_group: redmine
+
+# Redmineで使用する日本語フォントファイル
+redmine_font_path: /usr/share/fonts/google-noto-cjk/NotoSansCJK-Regular.ttc

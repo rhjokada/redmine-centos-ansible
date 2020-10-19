@@ -3,37 +3,10 @@
 db_passwd_redmine: Must_be_changed!
 # ----------------------------------------------------------------------
 
-# Redmineのチェックアウト元URL
-redmine_svn_url: http://svn.redmine.org/redmine/branches/3.4-stable
-
 # Redmineのデプロイ先ディレクトリ
 redmine_dir: /srv/redmine
-redmine_user: redmine
-
-# Redmineのデプロイ先ディレクトリのオーナー:グループ
-redmine_dir_owner: apache
-redmine_dir_group: apache
-
-# Redmineで使用する日本語フォントファイル
-redmine_font_path: /usr/share/fonts/google-noto-cjk/NotoSansCJK-Regular.ttc
-
-# pg_hba.confのパス
-pg_hba_conf_path: /var/lib/pgsql/data/pg_hba.conf
-
-# ダウンロードするRubyのソースコード
-ruby_url_dir: https://cache.ruby-lang.org/pub/ruby/2.4
-ruby_archive_version: ruby-2.4.1
-ruby_archive_ext: tar.bz2
-ruby_archive_name: "{{ ruby_archive_version }}.{{ ruby_archive_ext }}"
-
-ruby_file_name: /usr/local/bin/ruby
-work_dir: /tmp/redmine-setup
 
 # Database
 postgres_database_name: "redmine"
 postgres_username: "redmine"
-## password
-## - echo "md5$(echo -n '<password><username>' | md5sum | awk '{print $1}')"
-##   - e.g. echo "md5$(echo -n 'passwordredmine' | md5sum | awk '{print $1}')"
-postgres_password: "md56ac2f1318461b987d9802f0f01cbedcc"
-
+postgres_password: "md5{{ [db_passwd_redmine, postgres_username] |join |md5 }}"
