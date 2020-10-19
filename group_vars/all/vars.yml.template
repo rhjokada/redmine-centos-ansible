@@ -9,3 +9,4 @@ redmine_dir: /srv/redmine
 # Database
 postgres_database_name: "redmine"
 postgres_username: "redmine"
+postgres_password: "{{ db_passwd_redmine }}"
