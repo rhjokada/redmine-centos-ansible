@@ -1,0 +1,2 @@
+[redmine-servers]
+redmine ansible_host=
