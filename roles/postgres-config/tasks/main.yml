@@ -15,7 +15,7 @@
 - name: add user
   postgresql_user:
     name: "{{ postgres_username }}"
-    password: "{{ postgres_password }}"
+    password: "{{ postgres_password_md5 }}"
     role_attr_flags: "{{ postgres_assign_roles }}"
   become_user: postgres
 
