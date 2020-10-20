@@ -10,3 +10,9 @@ redmine_dir: /srv/redmine
 postgres_database_name: "redmine"
 postgres_username: "redmine"
 postgres_password: "{{ db_passwd_redmine }}"
+
+redmine_db_host: localhost
+
+mail_smtp_host: localhost
+mail_smtp_port: 25
+mail_domain: localhost

@@ -1,6 +1,6 @@
 ---
 - name: Install Postgres
-  hosts: redmine_servers
+  hosts: postgres
   roles:
   - name: postgres-install
     become: yes
