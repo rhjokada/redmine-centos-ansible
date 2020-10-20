@@ -1,3 +1,6 @@
-[redmine_servers]
 redmine     ansible_host=
 postgres    ansible_host=
+
+[redmine_servers]
+redmine
+postgres

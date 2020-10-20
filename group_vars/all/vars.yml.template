@@ -16,3 +16,5 @@ redmine_db_host: localhost
 mail_smtp_host: localhost
 mail_smtp_port: 25
 mail_domain: localhost
+
+redmine_context_root: /redmine
