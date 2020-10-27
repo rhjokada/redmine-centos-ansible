@@ -1,5 +1,5 @@
-redmine     ansible_host=
-postgres    ansible_host=
+redmine     ansible_host=example.com
+postgres    ansible_host=example.com
 
 [redmine_servers]
 redmine
