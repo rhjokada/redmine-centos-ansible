@@ -3,4 +3,3 @@ postgres    ansible_host=example.com
 
 [redmine_servers]
 redmine
-postgres
