@@ -24,7 +24,7 @@
   roles:
   - name: nginx-install
     become: yes
-  - name: nginx-config
-    become: yes
+  # - name: nginx-config
+  #   become: yes
   - name: nginx-redmine
     become: yes
