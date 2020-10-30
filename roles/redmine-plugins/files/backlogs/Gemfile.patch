@@ -1,0 +1,20 @@
+--- Gemfile.orig	2020-10-30 14:48:13.063357268 +0900
++++ Gemfile	2020-10-30 14:46:27.756353602 +0900
+@@ -8,7 +8,7 @@
+ 
+ gem "holidays", "~>1.0.3"
+ gem "icalendar"
+-gem "nokogiri"
++# gem "nokogiri"
+ gem "open-uri-cached"
+ gem "prawn"
+ gem 'json'
+@@ -25,7 +25,7 @@
+   gem 'cucumber-rails', require: false
+   gem "culerity"
+   gem "cucumber"
+-  gem "capybara", "~> 1"
++  # gem "capybara", "~> 1"
+   #gem "faye-websocket"
+   gem "poltergeist"
+   gem "database_cleaner"

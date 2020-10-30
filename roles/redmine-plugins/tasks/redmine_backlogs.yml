@@ -7,14 +7,14 @@
     version: "{{ redmine_backlog_plugin_branch }}"
   notify: redmine migration plugins
 
-- name: patch app/query.rb
+- name: Initial Setup redmine_backlogs - patch app/query.rb
   patch:
-    src: query.rb.patch
+    src: backlogs/query.rb.patch
     dest: "{{ redmine_dir }}/app/models/query.rb"
     remote_src: no
   notify: redmine migration plugins
 
-- name: Initial Setup redmine_backlogs
+- name: Initial Setup redmine_backlogs - labels.yaml
   copy:
     src: "{{ redmine_plugin_dir }}/redmine_backlogs/lib/labels/labels.yaml.default"
     dest: "{{ redmine_plugin_dir }}/redmine_backlogs/lib/labels/labels.yaml"
@@ -22,4 +22,11 @@
     owner: "{{ redmine_user }}"
     group: "{{ redmine_group }}"
     mode: '0644'
+  notify: redmine migration plugins
+
+- name: Initial Setup redmine_backlogs - Gemfile
+  patch:
+    src: backlogs/Gemfile.patch
+    dest: "{{ redmine_dir }}/redmine_backlogs/Gemfile"
+    remote_src: no
   notify: redmine migration plugins
