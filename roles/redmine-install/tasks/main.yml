@@ -58,3 +58,6 @@
     - ImageMagick
     - ImageMagick-devel
     enablerepo: PowerTools
+
+- name: Install redmined
+  include: redmined.yml
