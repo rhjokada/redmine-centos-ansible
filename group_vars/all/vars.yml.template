@@ -18,3 +18,6 @@ mail_smtp_port: 25
 mail_domain: localhost
 
 redmine_context_root: /redmine
+
+redmine_backlog_plugin_repo_url: https://github.com/backlogs/redmine_backlogs.git
+redmine_oauth_plugin_repo_url: https://github.com/suer/redmine_oauth_provider.git
