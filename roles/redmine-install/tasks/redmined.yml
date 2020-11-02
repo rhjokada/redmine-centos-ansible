@@ -1,4 +1,12 @@
 --- 
+- name:
+  file:
+    path: "{{ redmine_dir }}/tmp/puma"
+    state: directory
+    owner: "{{ redmine_user }}"
+    group: "{{ redmine_group }}"
+    mode: '0755'
+
 - name: copy puma.rb
   template:
     src: puma.rb
