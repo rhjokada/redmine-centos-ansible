@@ -5,7 +5,7 @@
  gem "holidays", "~>1.0.3"
  gem "icalendar"
 -gem "nokogiri"
-+# gem "nokogiri"
++#gem "nokogiri"
  gem "open-uri-cached"
  gem "prawn"
  gem 'json'
@@ -14,7 +14,7 @@
    gem "culerity"
    gem "cucumber"
 -  gem "capybara", "~> 1"
-+  # gem "capybara", "~> 1"
++  #gem "capybara", "~> 1"
    #gem "faye-websocket"
    gem "poltergeist"
    gem "database_cleaner"
