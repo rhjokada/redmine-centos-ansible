@@ -27,6 +27,6 @@
 - name: Initial Setup redmine_backlogs - Gemfile
   patch:
     src: backlogs/Gemfile.patch
-    dest: "{{ redmine_dir }}/redmine_backlogs/Gemfile"
+    dest: "{{ redmine_plugin_dir }}/redmine_backlogs/Gemfile"
     remote_src: no
   notify: redmine migration plugins
