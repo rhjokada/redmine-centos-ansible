@@ -48,7 +48,12 @@
   register: task_install_epel
   failed_when: task_install_epel.rc not in [0, 1]
 
-- name: Install epel 2
+- name: Install epel 2 - install gpg key
+  rpm_key:
+    key: https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-8
+  when: task_install_epel.rc == 1
+
+- name: Install epel 2 - install epel.rpm
   dnf:
     name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
     state: installed
@@ -65,7 +70,7 @@
     - libpq-devel
     - ImageMagick
     - ImageMagick-devel
-    enablerepo: PowerTools
+    enablerepo: PowerTools,codeready-builder-for-rhel-8-rhui-rpms
 
 - name: Install redmined
   include: redmined.yml
