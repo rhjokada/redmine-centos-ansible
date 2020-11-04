@@ -13,9 +13,11 @@ postgres_password: "{{ db_passwd_redmine }}"
 
 redmine_db_host: localhost
 
+mail_domain: localhost
 mail_smtp_host: localhost
 mail_smtp_port: 25
-mail_domain: localhost
+mail_smtp_username: username
+mail_smtp_password: password
 
 redmine_context_root: /redmine
 

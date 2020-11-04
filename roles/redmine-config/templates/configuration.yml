@@ -5,5 +5,7 @@ production:
       address: "{{ mail_smtp_host }}"
       port: {{ mail_smtp_port }}
       domain: "{{ mail_domain }}"
+      user_name: "{{ mail_smtp_username }}"
+      password: "{{ mail_smtp_password }}"
 
   rmagick_font_path: {{ redmine_font_path }}

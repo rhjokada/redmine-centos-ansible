@@ -12,6 +12,8 @@ redmine_db_num_pool: 5
 mail_smtp_host: localhost
 mail_smtp_port: 25
 mail_domain: localhost
+mail_smtp_username: username
+mail_smtp_password: password
 
 redmine_dir: /srv/redmine
 
