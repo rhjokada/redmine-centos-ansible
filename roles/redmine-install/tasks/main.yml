@@ -45,6 +45,14 @@
 - name: Install Epel
   dnf:
     name: epel-release
+  register: task_install_epel
+  failed_when: task_install_epel.rc not in [0, 1]
+
+- name: Install epel 2
+  dnf:
+    name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+    state: installed
+  when: task_install_epel.rc == 1
 
 - name: Install packages
   dnf:
