@@ -6,6 +6,7 @@
     - '@postgresql:12/server'
     - 'postgresql-contrib'
     - 'python3-psycopg2'
+    - 'glibc-langpack-ja'
     state: present
 
 - name: "Initialize Database"
