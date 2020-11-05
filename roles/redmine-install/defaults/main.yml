@@ -8,6 +8,8 @@ redmine_dir: /srv/redmine
 redmine_user: redmine
 redmine_group: redmine
 
+redmine_log_dir: /var/log/redmine
+
 redmine_socket_dir: "{{ redmine_dir }}/tmp/sockets" 
 redmine_socket: "{{ redmine_socket_dir }}/redmine.sock"
 

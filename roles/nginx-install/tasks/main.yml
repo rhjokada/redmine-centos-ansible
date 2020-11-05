@@ -26,4 +26,15 @@
   - http
   - https
   notify: restart firewalld
+  when: ansible_system_vendor != "Amazon EC2"
 
+- name: add logrotate config
+  template:
+    src: nginx.logrotate.conf
+    dest: /etc/logrotate.d/nginx
+    mode: '0644'
+
+- name: chmod log dir
+  file:
+    path: "{{ nginx_log_dir }}"
+    mode: '0755'
