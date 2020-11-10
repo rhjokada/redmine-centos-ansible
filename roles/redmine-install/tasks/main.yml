@@ -101,6 +101,12 @@
 - name: Install redmined
   include: redmined.yml
 
+- name: patch for svn
+  patch:
+    src: subversion_adapter.rb.patch
+    dest: "{{ redmine_dir }}lib/redmine/scm/adapters/subversion_adapter.rb"
+    remote_src: no
+
 - name: add logrotate config
   template:
     src: redmine.logrotate.conf

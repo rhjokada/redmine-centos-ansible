@@ -1,0 +1,11 @@
+--- subversion_adapter.rb.orig	2019-12-20 20:45:16.000000000 +0900
++++ subversion_adapter.rb	2020-11-10 10:31:26.939628929 +0900
+@@ -245,7 +245,7 @@
+           str = ''
+           str << " --username #{shell_quote(@login)}" unless @login.blank?
+           str << " --password #{shell_quote(@password)}" unless @login.blank? || @password.blank?
+-          str << " --no-auth-cache --non-interactive"
++          str << " --no-auth-cache --non-interactive --trust-server-cert"
+           str
+         end
+ 
