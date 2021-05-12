@@ -9,3 +9,5 @@ redmine_user: redmine
 redmine_group: redmine
 
 redmine_context_root: /redmine
+
+nginx_max_post_size: 30m
